@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import ReactDOM from "react-dom";
 import {
   List,
@@ -70,6 +70,11 @@ class TodoList extends React.Component {
       items
     });
   }
+
+/*   useEffect(() => {
+
+  }, []); */
+
 
   render() {
     return (

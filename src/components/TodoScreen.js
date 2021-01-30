@@ -6,6 +6,7 @@ import {
     ListItemText,
     ListItemIcon,
     IconButton,
+    TextField,
     Typography
 } from "@material-ui/core";
 import RootRef from "@material-ui/core/RootRef";
@@ -13,14 +14,20 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import InboxIcon from "@material-ui/icons/Inbox";
 import EditIcon from "@material-ui/icons/Edit";
 import { withStyles } from "@material-ui/core/styles/index";
-import TodoList from "./TodoList"
-
+import TodoList from "./TodoList";
+import InputField from "./InputField";
 class TodoScreen extends React.Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            listaTarefas: [],
+        }
     }
 
+    handleAddListaTarefas = (item) => {
+        const { listaTarefas } = this.state;
+        this.setState({listaTarefas: [...listaTarefas, item]})
+    }
 
     render() {
         const { classes } = this.props;
@@ -29,7 +36,8 @@ class TodoScreen extends React.Component {
                 <Typography>
                     Todo List
                 </Typography>
-                <TodoList />
+                <InputField handleAddListaTarefas={this.handleAddListaTarefas} />
+                <TodoList listaTarefas={this.state.listaTarefas} />
             </div>
         );
     }
